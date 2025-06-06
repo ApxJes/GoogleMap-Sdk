@@ -11,6 +11,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private var _binding: ActivityMainBinding? = null
@@ -49,9 +50,34 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap?) {
         this.map = map
         map?.mapType = GoogleMap.MAP_TYPE_NORMAL
+
         map?.uiSettings?.isZoomControlsEnabled = true
-        val latLng = LatLng(16.8409 , 96.1735)
-        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+
+        val yangonLatLong = LatLng(16.8409, 96.1735)
+        val pinLongLatLong = LatLng(16.8608, 96.2087)
+        val generalHospital = LatLng(16.7791, 96.1490)
+        val punHlaingHospital = LatLng(16.840791, 96.089114)
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(yangonLatLong, 11f))
+
+
+        val pinLongHospitalMarker = MarkerOptions()
+        pinLongHospitalMarker.position(pinLongLatLong)
+        pinLongHospitalMarker.title("Location")
+        pinLongHospitalMarker.snippet("Pin Long Hospital")
+        map?.addMarker(pinLongHospitalMarker)
+
+        val generalHospitalMarker = MarkerOptions()
+        generalHospitalMarker.position(generalHospital)
+        generalHospitalMarker.title("Location")
+        generalHospitalMarker.snippet("General Hospital")
+        map?.addMarker(generalHospitalMarker)
+
+        val punHlaingHospitalMarker = MarkerOptions()
+        punHlaingHospitalMarker.position(punHlaingHospital)
+        punHlaingHospitalMarker.title("Location")
+        punHlaingHospitalMarker.snippet("Pun Hlaing Hospital")
+        map?.addMarker(punHlaingHospitalMarker)
+
     }
 
     override fun onDestroy() {
