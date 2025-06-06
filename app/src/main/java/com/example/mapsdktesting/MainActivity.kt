@@ -1,8 +1,12 @@
 package com.example.mapsdktesting
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.createBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mapsdktesting.databinding.ActivityMainBinding
@@ -10,6 +14,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -64,20 +69,36 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         pinLongHospitalMarker.position(pinLongLatLong)
         pinLongHospitalMarker.title("Location")
         pinLongHospitalMarker.snippet("Pin Long Hospital")
+        pinLongHospitalMarker.icon(BitmapDescriptorFactory.fromBitmap(getBitMapFromDrawable(R.drawable.hospital_icon)))
         map?.addMarker(pinLongHospitalMarker)
 
         val generalHospitalMarker = MarkerOptions()
         generalHospitalMarker.position(generalHospital)
         generalHospitalMarker.title("Location")
         generalHospitalMarker.snippet("General Hospital")
+        generalHospitalMarker.icon(BitmapDescriptorFactory.fromBitmap(getBitMapFromDrawable(R.drawable.hospital_icon)))
         map?.addMarker(generalHospitalMarker)
 
         val punHlaingHospitalMarker = MarkerOptions()
         punHlaingHospitalMarker.position(punHlaingHospital)
         punHlaingHospitalMarker.title("Location")
         punHlaingHospitalMarker.snippet("Pun Hlaing Hospital")
+        punHlaingHospitalMarker.icon(BitmapDescriptorFactory.fromBitmap(getBitMapFromDrawable(R.drawable.hospital_icon)))
         map?.addMarker(punHlaingHospitalMarker)
 
+    }
+
+    private fun getBitMapFromDrawable(resId: Int): Bitmap? {
+        var bitmap: Bitmap? = null
+        val drawable = ResourcesCompat.getDrawable(resources, resId, null)
+        if(drawable != null) {
+            bitmap = createBitmap(120, 120, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bitmap)
+            drawable.setBounds(0, 0, canvas.width, canvas.height)
+            drawable.draw(canvas)
+        }
+
+        return bitmap
     }
 
     override fun onDestroy() {
