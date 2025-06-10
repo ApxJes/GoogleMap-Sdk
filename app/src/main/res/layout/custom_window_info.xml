@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp"
+    android:elevation="4dp"
+    android:layout_margin="3dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="6dp"
+        android:background="@color/white">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imvHospital"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/general_hospital_yangon" />
+
+        <TextView
+            android:id="@+id/txvHospitalName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:minLines="2"
+            android:text="General Hospital Yangon"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txvHospitalDes"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:minLines="3"
+            android:textColor="@color/black"
+            android:text="@string/general_hospital_yangon" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

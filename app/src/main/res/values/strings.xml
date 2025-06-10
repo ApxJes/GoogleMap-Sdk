@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MapSdkTesting</string>
+    <string name="general_hospital_yangon">Yangon General Hospital (YGH) is a large public hospital in Yangon, Myanmar, serving as a major teaching hospital and tertiary care facility</string>
+    <string name="pin_long_hospital">Pinlon Hospital is a private, multi-speciality hospital located in North Dagon Township of Yangon, Myanmar</string>
 </resources>
